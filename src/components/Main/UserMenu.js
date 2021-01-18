@@ -64,10 +64,9 @@ function UserMenu({ displayName, dropdowns }) {
                         {_.map(dropdowns, (dropdown, index) => (
                             <MenuItem
                                 key={index}
-                                data-testid={`user-menu-item-${dropdown.title}`}
                                 disabled={dropdown.disabled}
-                                onClick={() => {
-                                    _.isFunction(dropdown.handler) && dropdown.handler();
+                                onClick={(...args) => {
+                                    _.isFunction(dropdown.handler) && dropdown.handler(...args);
                                     handleClose();
                                 }}
                             >

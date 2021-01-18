@@ -21,11 +21,11 @@ export const useStyles = makeStyles(theme => ({
     button: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(1),
-        marginLeft: 5,
+        marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
     },
     error: {
-        marginLeft: 5,
+        marginLeft: theme.spacing(1),
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         fontSize: 12,

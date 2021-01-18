@@ -4,11 +4,11 @@ import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormPaper } from '..';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
     title: {
-        marginBottom: 30,
-        paddingTop: 20,
-        paddingLeft: 10,
+        marginBottom: theme.spacing(3),
+        paddingTop: theme.spacing(2),
+        paddingLeft: theme.spacing(1),
     },
 }));
 

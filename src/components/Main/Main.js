@@ -21,6 +21,8 @@ import {
 import {
     Menu as MenuIcon,
     ExitToApp as ExitToAppIcon,
+    Brightness2 as LightModeIcon,
+    Flare as DarkModeIcon,
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import MainDrawer from '../MainDrawer';
@@ -60,7 +62,7 @@ export const useStyles = makeStyles(theme => ({
         fill: 'black',
     },
     appBar: {
-        marginLeft: 20,
+        marginLeft: theme.spacing(2),
         width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
@@ -73,6 +75,7 @@ export const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        // TODO need to use appBar height from themes.
         paddingTop: 64,
     },
     contentShift: {
@@ -81,6 +84,7 @@ export const useStyles = makeStyles(theme => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
         marginLeft: 265,
+        // TODO need to use appBar height from themes.
         paddingTop: 64,
     },
     hide: { visibility: 'hidden' },
@@ -109,12 +113,15 @@ function Main({ authenticate }) {
     const routesAssemblerService = useProvider('route')();
     const { open: drawerOpen, enabled: drawerEnabled } = useStore('drawer');
     const { displayName, authenticated } = useStore('userSession');
-    const { confirmed: dialogConfirmed, canceled: dialogCanceled, key: dialogKey } = useStore('dialog');
     const { login: loginUser, logout: logoutUser } = useActions('userSession');
     const { toggle: toggleDrawer } = useActions('drawer');
-    const { showDialog, hideDialog } = useActions('dialog');
     const { disable: disableDrawer, hide: hideDrawer } = useActions('drawer');
     const wideScreenMode = useIsWideScreenMode();
+    const theme = useStore('theme');
+    const themeActions = useActions('theme');
+    const isDark = theme.palette.type === 'dark';
+
+    const switchThemeMode = () => themeActions.setMode(!isDark ? 'dark' : 'light');
 
     useEffect(() => {
         const logout = async () => {
@@ -169,29 +176,6 @@ function Main({ authenticate }) {
             loginUser(user);
         }
     };
-
-    const confirmLogout = () => {
-        if (_.includes(historyService.getUrl(), 'test/wizard')) {
-            return showDialog({
-                title: 'Your session will be whiped out when you logout, are you sure?',
-                key: 'main',
-            });
-        }
-        logout();
-    };
-
-    useEffect(() => {
-        if (dialogConfirmed && _.eq(dialogKey, 'main')) {
-            logout();
-            hideDialog();
-        }
-    }, [dialogConfirmed, hideDialog, dialogKey, logout]);
-
-    useEffect(() => {
-        if (dialogCanceled && _.eq(dialogKey, 'main')) {
-            hideDialog();
-        }
-    }, [dialogCanceled, dialogKey, hideDialog]);
 
     const redirectUserToRelevantRoute = () => {
         const lastVisitedRoute = localStorage.getItem('$lastVisitedRoute');
@@ -269,7 +253,12 @@ function Main({ authenticate }) {
                                     authenticated && {
                                         title: 'Logout',
                                         Icon: <ExitToAppIcon />,
-                                        handler: confirmLogout,
+                                        handler: logout,
+                                    },
+                                    {
+                                        title: `Switch to ${!isDark ? 'Dark' : 'Light'} Theme`,
+                                        Icon: !isDark ? <LightModeIcon /> : <DarkModeIcon />,
+                                        handler: switchThemeMode,
                                     },
                                 ]}
                             />

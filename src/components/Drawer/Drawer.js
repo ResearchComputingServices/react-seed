@@ -44,8 +44,8 @@ export const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft: 30,
-        paddingRight: 15,
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(2),
     },
     itemContent: {
         whiteSpace: 'nowrap',
@@ -53,7 +53,7 @@ export const useStyles = makeStyles(theme => ({
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        padding: 5,
+        padding: theme.spacing(1),
         width: '100%',
     },
     itemIcon: { marginRight: 6 },
@@ -63,7 +63,7 @@ export const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: 5,
+        padding: theme.spacing(1),
         // TODO - need to put app bar height in theme
         height: 64,
     },

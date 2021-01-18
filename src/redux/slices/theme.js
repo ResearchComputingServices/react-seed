@@ -17,5 +17,9 @@ const initialState = {
 export default createSlice({
     name: 'theme',
     initialState,
-    reducers: {},
+    reducers: {
+        setMode: (state, action) => {
+            state.palette.type = action.payload;
+        },
+    },
 });
