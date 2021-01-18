@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormContainer } from '..';
 import Form from '../Form';
 
-function TestCategoryForm({
+function UserFieldForm({
     title,
     data,
     layout,
@@ -22,7 +22,7 @@ function TestCategoryForm({
     );
 }
 
-TestCategoryForm.propTypes = {
+UserFieldForm.propTypes = {
     title: PropTypes.string,
     data: PropTypes.object,
     layout: PropTypes.array.isRequired,
@@ -30,10 +30,10 @@ TestCategoryForm.propTypes = {
     buttons: PropTypes.array,
 };
 
-TestCategoryForm.defaultProps = {
-    title: 'Test Category',
+UserFieldForm.defaultProps = {
+    title: 'User Field',
     data: {},
     buttons: [],
 };
 
-export default TestCategoryForm;
+export default UserFieldForm;

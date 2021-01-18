@@ -50,7 +50,6 @@ export default function Ripple({ color, className, style, size }) {
         <Box
             key={value}
             className={classes.children}
-            data-testid={`ripple-children-${value}`}
             style={{
                 ...color ? { borderColor: colorMap[color] } : {},
                 borderWidth: size * 0.05,

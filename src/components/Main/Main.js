@@ -177,21 +177,8 @@ function Main({ authenticate }) {
         }
     };
 
-    const redirectUserToRelevantRoute = () => {
-        const lastVisitedRoute = localStorage.getItem('$lastVisitedRoute');
-        // If we left off at a wizard session we should always go back to it.
-        if (_.eq(lastVisitedRoute, '/test/wizard')) {
-            if (!_.eq(historyService.getUrl(), '/test/wizard')) {
-                historyService.go('/test/wizard');
-            }
-        } else if (!_.isNil(lastVisitedRoute) && !_.eq(lastVisitedRoute, historyService.getUrl())) {
-            historyService.go('/dashboard');
-        }
-    };
-
     useMount(async () => {
         disableDrawer();
-        redirectUserToRelevantRoute();
         // Responsible for parsing all request from camel case to snake case and responses from snake case to camel case.
         interceptorService.registerDataTransformInterceptor();
         interceptorService.registerUnhandledInterceptor(() => console.error('Server failed to send back a response or has crashed.'));
@@ -256,7 +243,7 @@ function Main({ authenticate }) {
                                         handler: logout,
                                     },
                                     {
-                                        title: `Switch to ${!isDark ? 'Dark' : 'Light'} Theme`,
+                                        title: `${!isDark ? 'Dark' : 'Light'} Theme`,
                                         Icon: !isDark ? <LightModeIcon /> : <DarkModeIcon />,
                                         handler: switchThemeMode,
                                     },
