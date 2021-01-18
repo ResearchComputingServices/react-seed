@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Error } from '..';
 
-const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(() => ({
     progressBar: {
         width: '50%',
         marginLeft: '25%',

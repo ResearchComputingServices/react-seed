@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(() => ({
     root: {
         marginBottom: 'auto',
         display: 'flex',

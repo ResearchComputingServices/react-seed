@@ -4,7 +4,7 @@ import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormPaper } from '..';
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
     title: {
         marginBottom: theme.spacing(3),
         paddingTop: theme.spacing(2),

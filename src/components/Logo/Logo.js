@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../../assets/images/carleton.svg';
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
     root: {
         background: 'white',
         padding: theme.spacing(1),

@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useMount } from '../../hooks';
 import { Ripple } from '..';
 
-const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles(theme => ({
     root: {
         height: 500,
         minWidth: 420,

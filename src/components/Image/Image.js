@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Layout } from '..';
 import { useData, useService } from '../../hooks';
 
-const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(() => ({
     scaleDown: {
         width: '100%',
         height: '100%',

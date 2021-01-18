@@ -12,7 +12,7 @@ import {
     useState,
 } from '../../hooks';
 
-const useStyles = makeStyles(() => ({ root: { zIndex: 1000000 } }));
+export const useStyles = makeStyles(() => ({ root: { zIndex: 1000000 } }));
 
 function ModalInfo({
     show,
