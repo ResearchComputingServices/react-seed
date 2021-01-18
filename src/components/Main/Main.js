@@ -16,6 +16,7 @@ import {
     Toolbar,
     IconButton,
     Box,
+    Typography,
 } from '@material-ui/core';
 import {
     Menu as MenuIcon,
@@ -83,7 +84,6 @@ export const useStyles = makeStyles(theme => ({
         paddingTop: 64,
     },
     hide: { visibility: 'hidden' },
-    title: { fontSize: 22 },
 }));
 function Main({ authenticate }) {
     const classes = useStyles();
@@ -253,15 +253,16 @@ function Main({ authenticate }) {
                         </Box>
                         <Logo />
                         <Box className={classes.appBar}>
-                            <h5 className={
-                                clsx(
-                                    [classes.title],
-                                    { [classes.hide]: dimensions.width < 690 },
-                                )
-                            }
+                            <Typography
+                                className={
+                                    clsx(
+                                        { [classes.hide]: dimensions.width < 690 },
+                                    )
+                                }
+                                variant='h5'
                             >
                                 React Seed
-                            </h5>
+                            </Typography>
                             <UserMenu
                                 displayName={displayName}
                                 dropdowns={[

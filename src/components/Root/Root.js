@@ -1,22 +1,23 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import { CssBaseline } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Main from '../Main';
-import store from '../../redux/store';
-import { useService } from '../../hooks';
+import { useStore, useService } from '../../hooks';
 
-export default function() {
+function Root() {
+    const theme = useStore('theme');
+    console.log(theme);
     const historyService = useService('history');
-    const App = () => (
-        <Provider store={store}>
+
+    return (
+        <ThemeProvider theme={createMuiTheme(theme)}>
             <CssBaseline />
             <Router history={historyService.getHistory()}>
                 <Main />
             </Router>
-        </Provider>
-    );
-    return (
-        <App />
+        </ThemeProvider>
     );
 }
+
+export default Root;

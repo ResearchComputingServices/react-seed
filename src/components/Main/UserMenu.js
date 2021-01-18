@@ -3,6 +3,7 @@ import {
     Menu,
     MenuItem,
     Box,
+    Typography,
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import PropTypes from 'prop-types';
@@ -39,7 +40,7 @@ function UserMenu({ displayName, dropdowns }) {
                 role='menuitem'
                 tabIndex={0}
             >
-                <h2>{displayName}</h2>
+                <Typography variant='h6'>{displayName}</Typography>
                 {!_.isEmpty(dropdowns) && <ArrowDropDownIcon />}
             </Box>
             {!_.isEmpty(dropdowns)

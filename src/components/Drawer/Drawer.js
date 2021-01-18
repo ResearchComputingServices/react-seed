@@ -15,6 +15,7 @@ import {
     Divider,
     List,
     Box,
+    Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Logo } from '..';
@@ -56,15 +57,17 @@ export const useStyles = makeStyles(theme => ({
         width: '100%',
     },
     itemIcon: { marginRight: 6 },
-    itemText: { fontSize: 15 },
+    itemText: { padding: theme.spacing(2) },
     logo: {
+        backgroundColor: '#ffffff',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
         padding: 5,
         // TODO - need to put app bar height in theme
-        minHeight: 64,
+        height: 64,
     },
+    closeButton: { color: 'black' },
 }));
 
 function DrawerItem({
@@ -126,7 +129,9 @@ function DrawerItem({
                             fontSize='small'
                         />
                     )}
-                    <p className={classes.itemText}>{title}</p>
+                    <Typography className={classes.itemText}>
+                        {title}
+                    </Typography>
                 </Box>
                 {expandIcon}
             </ListItem>
@@ -188,7 +193,10 @@ function CustomDrawer({
             variant='persistent'
         >
             <Box className={classes.logo}>
-                <IconButton onClick={() => toggle()}>
+                <IconButton
+                    className={classes.closeButton}
+                    onClick={() => toggle()}
+                >
                     <ChevronLeftIcon />
                 </IconButton>
                 <Logo />
