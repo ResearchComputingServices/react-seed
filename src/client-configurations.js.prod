@@ -1,6 +1,6 @@
 class ClientConfig {
   getServerURL() {
-    return 'https://permafrost.carleton.ca'
+    return 'https://rcs-development.carleton.ca'
   }
   getAuthenticationURL () {
     return this.getServerURL() + ':7022'
