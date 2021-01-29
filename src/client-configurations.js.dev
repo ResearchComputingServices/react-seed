@@ -17,7 +17,7 @@ class ClientConfig {
     return 'seed'
   }
   getServer() {
-    return 'permafrost.carleton.ca'
+    return 'rcs-development.carleton.ca'
   }
   getPort() {
     return '7010'
